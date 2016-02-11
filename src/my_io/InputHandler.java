@@ -24,10 +24,11 @@ public class InputHandler {
 		try {
 			FileReader reader = new FileReader(fileLocation);
 			BufferedReader buffer = new BufferedReader(reader);
+			final String delim = " "; 
 			
 			//global parameters
 			String line = buffer.readLine();
-			String[] numbers = line.split(" ");
+			String[] numbers = line.split(delim);
 			for (int i=0 ; i<5 ; i++){
 				data.simNumbers.add(i, Integer.parseInt(numbers[i]));
 			}
@@ -36,7 +37,7 @@ public class InputHandler {
 			line = buffer.readLine();
 			int numProducts = Integer.parseInt(line);
 			line = buffer.readLine();
-			String[] weights = line.split(" ");
+			String[] weights = line.split(delim);
 			for (int i=0 ; i<numProducts ; i++){
 				data.products.put(new Integer(i), new Product(i, Integer.parseInt(weights[i])));
 			}
@@ -51,28 +52,42 @@ public class InputHandler {
 			for (int i=0 ; i<numWares ; i++){
 				inventory = new HashMap<Product, Integer>();
 				line = buffer.readLine();
-				xy = line.split(" ");
+				xy = line.split(delim);
 				p = new Point(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
 				line = buffer.readLine();
-				quants = line.split(" ");
+				quants = line.split(delim);
 				for (int j=0 ; j<quants.length ; j++){
 					inventory.put(data.products.get(j), Integer.parseInt(quants[j]));
 				}
 				data.wares.add(i, new Warehouse(p, inventory));
-				
-				
-				
 			}
 			
-			
-			
-			
-			
+			//orders
+			line = buffer.readLine();
+			int numOrders = Integer.parseInt(line);
+			int productsInOrder;
+			String[] prods;
+			Order order;
+			for (int i=0 ; i<numOrders ; i++){
+				line = buffer.readLine();
+				xy = line.split(delim);
+				p = new Point(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
+				line = buffer.readLine();
+				productsInOrder = Integer.parseInt(line);
+				line = buffer.readLine();
+				prods = line.split(delim);
+				order = new Order(p);
+				for (int j=0 ; j<productsInOrder ; j++){
+					order.add(Integer.parseInt(prods[i]));
+				}
+				data.orders.add(order);
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public Data getData(){
 		return data;
