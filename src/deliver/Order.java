@@ -1,7 +1,6 @@
 package deliver;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Order {
 	private Point destination;
@@ -36,8 +35,14 @@ public class Order {
 		this.nearestWarehouse = nearestWarehouse;
 	}
 	
-	public void add(int productID){
-		if productList.containsKey(productID){
+	public void add(Integer productID){
+		productList.forEach ((k,v)-> {
+			if (productID.equals(k)){
+				productList.put(k, v+1);
+				return;
+			}
+		});
+		productList.put(productID, 1);
 	}
 	
 
