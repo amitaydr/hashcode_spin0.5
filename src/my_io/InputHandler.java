@@ -9,6 +9,7 @@ import java.util.List;
 
 import deliver.Drone;
 import deliver.Order;
+import deliver.Point;
 import deliver.Warehouse;
 import deliver.Product;
 
@@ -43,8 +44,21 @@ public class InputHandler {
 			//warehouses
 			line = buffer.readLine();
 			int numWares = Integer.parseInt(line);
+			String[] xy;
+			String[] quants;
+			Point p;
+			HashMap<Product, Integer> inventory;
 			for (int i=0 ; i<numWares ; i++){
+				inventory = new HashMap<Product, Integer>();
 				line = buffer.readLine();
+				xy = line.split(" ");
+				p = new Point(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
+				line = buffer.readLine();
+				quants = line.split(" ");
+				for (int j=0 ; j<quants.length ; j++){
+					inventory.put(data.products.get(j), Integer.parseInt(quants[j]));
+				}
+				data.wares.add(i, new Warehouse(p, inventory));
 				
 				
 				
