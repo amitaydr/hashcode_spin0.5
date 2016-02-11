@@ -20,7 +20,7 @@ public class Run {
 		
 		Data data = h.getData();
 		for (Order o : data.orders){
-			Point oLoc = o.getDestenation();
+			Point oLoc = o.getDestination();
 			Warehouse nearest=null;
 			int dist = Integer.MAX_VALUE;
 			for(Warehouse w : data.wares){
