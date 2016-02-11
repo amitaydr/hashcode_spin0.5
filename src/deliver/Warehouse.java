@@ -1,14 +1,16 @@
 package deliver;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Warehouse {
 	private Point location;
 	private HashMap<Product,Integer> inventory;
+	private List<Drone> drones;
 	
-	public Warehouse(int x, int y, HashMap<Product, Integer> inventory) {
+	public Warehouse(Point p, HashMap<Product, Integer> inventory) {
 		super();
-		this.location = new Point(x,y);
+		this.location = p;
 		this.inventory = inventory;
 	}
 
@@ -33,4 +35,14 @@ public class Warehouse {
 	public void setInventory(HashMap<Product, Integer> inventory) {
 		this.inventory = inventory;
 	}
+	
+	public List<Drone> getDrones() {
+		return drones;
+	}
+
+
+	public void setDrones(List<Drone> drones) {
+		this.drones = drones;
+	}
+
 }
