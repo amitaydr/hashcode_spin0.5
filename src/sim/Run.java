@@ -19,7 +19,7 @@ public class Run {
 		}
 		
 		Data data = h.getData();
-		for (Order o : data.orders){
+		data.orders.forEach((k,o)-> {
 			Point oLoc = o.getDestenation();
 			Warehouse nearest=null;
 			int dist = Integer.MAX_VALUE;
@@ -31,10 +31,12 @@ public class Run {
 			}
 			o.setNearestWarehouse(nearest);
 		
-			
-		}
+		});	
 		
-
+		
+		
+		
+		
 	}
 
 }
