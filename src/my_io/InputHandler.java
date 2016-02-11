@@ -48,16 +48,16 @@ public class InputHandler {
 			String[] xy;
 			String[] quants;
 			Point p;
-			HashMap<Product, Integer> inventory;
+			HashMap<Integer, Integer> inventory;
 			for (int i=0 ; i<numWares ; i++){
-				inventory = new HashMap<Product, Integer>();
+				inventory = new HashMap<Integer, Integer>();
 				line = buffer.readLine();
 				xy = line.split(delim);
 				p = new Point(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
 				line = buffer.readLine();
 				quants = line.split(delim);
 				for (int j=0 ; j<quants.length ; j++){
-					inventory.put(data.products.get(j), Integer.parseInt(quants[j]));
+					inventory.put(j, Integer.parseInt(quants[j]));
 				}
 				data.wares.add(i, new Warehouse(p, inventory));
 			}
@@ -78,7 +78,7 @@ public class InputHandler {
 				prods = line.split(delim);
 				order = new Order(p);
 				for (int j=0 ; j<productsInOrder ; j++){
-					order.add(Integer.parseInt(prods[i]));
+					order.add(Integer.parseInt(prods[j]));
 				}
 				data.orders.put(i, order);
 			}

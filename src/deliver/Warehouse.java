@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Warehouse {
 	private Point location;
-	private HashMap<Product,Integer> inventory;
+	private HashMap<Integer,Integer> inventory;
 	private List<Drone> drones;
 	
-	public Warehouse(Point p, HashMap<Product, Integer> inventory) {
+	public Warehouse(Point p, HashMap<Integer, Integer> inventory) {
 		super();
 		this.location = p;
 		this.inventory = inventory;
@@ -28,11 +28,11 @@ public class Warehouse {
 
 
 
-	public HashMap<Product, Integer> getInventory() {
+	public HashMap<Integer, Integer> getInventory() {
 		return inventory;
 	}
 
-	public void setInventory(HashMap<Product, Integer> inventory) {
+	public void setInventory(HashMap<Integer, Integer> inventory) {
 		this.inventory = inventory;
 	}
 	

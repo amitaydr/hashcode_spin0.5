@@ -6,7 +6,10 @@ import deliver.Order;
 import deliver.Point;
 import deliver.Warehouse;
 import my_io.Data;
+import my_io.Dcommand;
 import my_io.InputHandler;
+import my_io.LUcommand;
+import my_io.OutputHandler;
 
 public class Run {
 
@@ -19,6 +22,8 @@ public class Run {
 		}
 		
 		Data data = h.getData();
+		OutputHandler out = new OutputHandler();
+		int i=0;
 		data.orders.forEach((k,o)-> {
 			Point oLoc = o.getDestination();
 			Warehouse nearest=null;
@@ -30,9 +35,16 @@ public class Run {
 				}
 			}
 			o.setNearestWarehouse(nearest);
-		
+			if (nearest.getInventory().containsKey(o.getProductList().get(0))){
+				Integer next = o.getProductList().keySet().iterator().next();
+				out.addCom(new LUcommand(i, 'L',data.wares.indexOf(nearest), next,o.getProductList().get(next) ));
+				out.addCom(new Dcommand(i,o.,next.intValue(),o.getProductList().get(next).intValue()));
+				i++;
+			}
 		});	
 		
+		out.addCom(new LUcommand(1,'L',1,1,1));
+		out.toFile("output");
 		
 		
 		
