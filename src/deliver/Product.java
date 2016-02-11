@@ -24,5 +24,9 @@ public class Product {
 	public void setWheight(int wheight) {
 		this.wheight = wheight;
 	}
+	
+	public boolean equals (Product other){
+		return (this.id == other.id);
+	}
 
 }

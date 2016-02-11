@@ -1,31 +1,43 @@
 package deliver;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Order {
-	private Point destenation;
-	private List<Product> productList;
+	private Point destination;
+	private HashMap<Integer,Integer> productList; //productID, amount
+	private Warehouse nearestWarehouse;
 	
-	public Order(Point destenation, List<Product> productList) {
+	public Order(Point destination, HashMap<Integer,Integer> productList) {
 		super();
-		this.destenation = destenation;
+		this.destination = destination;
 		this.productList = productList;
 	}
 
 	public Point getDestenation() {
-		return destenation;
+		return destination;
 	}
 
 	public void setDestenation(Point destenation) {
-		this.destenation = destenation;
+		this.destination = destenation;
 	}
 
-	public List<Product> getProductList() {
+	public HashMap<Integer,Integer> getProductList() {
 		return productList;
 	}
 
-	public void setProductList(List<Product> productList) {
-		this.productList = productList;
+
+
+	public Warehouse getNearestWarehouse() {
+		return nearestWarehouse;
+	}
+
+	public void setNearestWarehouse(Warehouse nearestWarehouse) {
+		this.nearestWarehouse = nearestWarehouse;
+	}
+	
+	public void add(int productID){
+		if productList.containsKey(productID){
 	}
 	
 

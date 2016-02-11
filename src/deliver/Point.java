@@ -22,6 +22,7 @@ public class Point {
 	}
 	
 	public int distance (Point other){
+		if (other==null)return -1;
 		return (int)Math.ceil(Math.sqrt(Math.pow((this.x-other.x),2)+Math.pow((this.y-other.y),2)));
 		
 	}
