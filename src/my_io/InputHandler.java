@@ -80,7 +80,7 @@ public class InputHandler {
 				for (int j=0 ; j<productsInOrder ; j++){
 					order.add(Integer.parseInt(prods[i]));
 				}
-				data.orders.add(order);
+				data.orders.put(i, order);
 			}
 			
 		} catch (IOException e) {

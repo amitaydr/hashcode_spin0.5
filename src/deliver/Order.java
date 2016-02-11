@@ -12,8 +12,14 @@ public class Order {
 		this.destination = destination;
 		this.productList = productList;
 	}
+	
+	public Order(Point destination) {
+		super();
+		this.destination = destination;
+		productList = new HashMap<Integer,Integer>();
+	}
 
-	public Point getDestenation() {
+	public Point getDestination() {
 		return destination;
 	}
 
